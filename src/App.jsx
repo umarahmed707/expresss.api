@@ -36,7 +36,7 @@ price:0
     },
     onSubmit: async(values)=>{
 try {
-  const getapi = await axios.post("http://localhost:5000/add-products"  ,{
+ await axios.post("http://localhost:5000/add-products"  ,{
     image : values.image,
     title:values.title,
     description:values.description,
