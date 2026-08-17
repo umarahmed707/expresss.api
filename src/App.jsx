@@ -9,10 +9,11 @@ function App() {
 
   const [allProducts, setAllProducts] = useState([])
 
+const baseURL = 'https://ecom-server-backend.vercel.app/get-product';
 
   const getallproducts= async()=>{
 try {
-  const getapi = await axios.get("http://localhost:5000/get-product")
+  const getapi = await axios.get(`${baseURL}/get-product`)
       console.log("apiRes", getapi.data)
 
 setAllProducts(getapi.data.products)
@@ -36,16 +37,18 @@ price:0
     },
     onSubmit: async(values)=>{
 try {
- await axios.post("http://localhost:5000/add-products"  ,{
-    image : values.image,
-    title:values.title,
-    description:values.description,
-    price:values.price
-  })
+  const response = await axios.post(`${baseURL}/add-products`, {
+    image: values.image,
+    title: values.title,
+    description: values.description,
+    price: values.price,
+  });
+
+  console.log(response.data);
 
   getallproducts();
 } catch (error) {
-  console.log(error)
+  console.log("Error:", error);
 }
     }
   })
