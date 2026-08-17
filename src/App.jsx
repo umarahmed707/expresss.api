@@ -9,7 +9,7 @@ function App() {
 
   const [allProducts, setAllProducts] = useState([])
 
-const baseURL = 'https://ecom-server-backend.vercel.app/get-product';
+const baseURL = 'https://ecom-server-backend.vercel.app';
 
   const getallproducts= async()=>{
 try {
